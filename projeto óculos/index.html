@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Droppable - Default functionality</title>
+  <style>
+  #draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+  #droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div id="draggable" class="ui-widget-content col xl6">
+      <img id="oculos" src="" width="240px" height="120px" />
+    </div>
+           
+    <div id="droppable" class="ui-widget-header col xl6">
+      <img width="800" height="800"  src="http://s2.glbimg.com/jsaPuF7nO23vRxQkuJ_V3WgouKA=/e.glbimg.com/og/ed/f/original/2014/06/10/461777879.jpg">
+    </div>
+  </div>
+  <div class="row">
+    <button id="next" class="waves-effect waves-light btn col xl2" onClick="trocar()"> Next </button>
+  </div>
+</div>
+
+ 
+</body>
+  <script>
+  $( function() {
+    $( "#draggable" ).draggable();
+    $( "#droppable" ).droppable({
+      drop: function( event, ui ) {
+        $( this )
+          .addClass( "ui-state-highlight" )
+          .find( "p" )
+            .html( "Dropped!" );
+      }
+    });
+  } );
+
+  imagemOculos = document.getElementById('oculos')
+  listaImagens = ["imagem.png","imagem2.png","imagem3.png","imagem4.png"]
+  item = 0
+  imagemOculos.src = listaImagens[item]
+  
+  function trocar(){
+    if(item > listaImagens.length -2){
+      item = 0
+    }else{
+      item += 1
+    }
+    imagemOculos.src = listaImagens[item]
+  }
+
+  </script>
+</html>
